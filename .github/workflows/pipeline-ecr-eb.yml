@@ -17,7 +17,7 @@ env:
   
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
     env:
       MODULE_FULLNAME: ${{ vars.PROJECT_NAME }}/${{ vars.MODULE_NAME }}
       REGISTRY_URL: ${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.${{ vars.AWS_REGION }}.amazonaws.com
@@ -43,7 +43,7 @@ jobs:
            frontend/Dockerrun.aws.json
     
   deploy:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
     needs: build
     steps:
       - uses: actions/download-artifact@v4
